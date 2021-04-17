@@ -9,6 +9,8 @@ class TestCC(unittest.TestCase):
     def test1(self):
         self.assertFalse(credit_card_validator(''))
 
+    # Check Visa:
+
     # Should validate a good visa
     # Category Partition Testing
     def test2(self):
@@ -29,6 +31,8 @@ class TestCC(unittest.TestCase):
     def test5(self):
         self.assertFalse(credit_card_validator('4896102163794206'))
 
+    # Check Amex:
+
     # Should pass valid Amex with prefix 34
     # Picked using edge case
     def test6(self):
@@ -44,10 +48,15 @@ class TestCC(unittest.TestCase):
     def test8(self):
         self.assertFalse(credit_card_validator('34552435567326'))
 
+    # Should fail Luhn invalid prefix 34 with 15 digits
+    # Picked using edge case
+    def test8b(self):
+        self.assertFalse(credit_card_validator('345524355673205'))
+
     # Should pass valid Amex prefix 37
     # Picked using edge case
     def test9(self):
-        self.assertTrue(credit_card_validator('375313925744603'))
+        self.assertTrue(credit_card_validator('375313925744609'))
 
     # Should fail Luhn valid prefix 34 with 16 digits
     # Picked using Category Partition Testing / common error
@@ -58,6 +67,13 @@ class TestCC(unittest.TestCase):
     # Picked using edge case
     def test11(self):
         self.assertFalse(credit_card_validator('37531392574464'))
+
+    # Should fail Luhn invalid prefix 34 with 15 digits
+    # Picked using edge case
+    def test11b(self):
+        self.assertFalse(credit_card_validator('345524355673205'))
+
+    # Check invalid prefixes:
 
     # Should fail Luhn valid cc number with length 16 and invalid prefix
     # Picked using common error
