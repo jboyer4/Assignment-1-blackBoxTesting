@@ -3,6 +3,7 @@ from credit_card_validator import credit_card_validator
 
 
 class TestCC(unittest.TestCase):
+
     # Should fail with no number
     # Picked using edge case
     def test1(self):
