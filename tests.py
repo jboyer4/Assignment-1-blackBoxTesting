@@ -100,12 +100,17 @@ class TestCC(unittest.TestCase):
     # Should fail Luhn valid MC number in 51-55 when length is 15
     # Picked using Category Partition Testing
     def test16(self):
-        self.assertTrue(credit_card_validator('519366222477027'))
+        self.assertFalse(credit_card_validator('519366222477027'))
 
     # Should fail Luhn valid MC number in 51-55 when length is 17
     # Picked using Category Partition Testing
     def test17(self):
-        self.assertTrue(credit_card_validator('51936622247702718'))
+        self.assertFalse(credit_card_validator('51936622247702718'))
+
+    # Should fail Luhn invalid MC number in 51-55 when length is 16
+    # Picked using Category Partition Testing
+    def test17(self):
+        self.assertFalse(credit_card_validator('5372899445328342'))
 
 
 if __name__ == '__main__':
