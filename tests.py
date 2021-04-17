@@ -58,5 +58,16 @@ class TestCC(unittest.TestCase):
     def test11(self):
         self.assertFalse(credit_card_validator('37531392574464'))
 
+    # Should fail Luhn valid cc number with length 16 and invalid prefix
+    # Picked using common error
+    def test12(self):
+        self.assertFalse(credit_card_validator('8993978879746468'))
+
+    # Should fail Luhn valid cc number with length 15 and invalid prefix
+    # Picked using common error
+    def test13(self):
+        self.assertFalse(credit_card_validator('030851177275070'))
+
+
 if __name__ == '__main__':
     unittest.main()
