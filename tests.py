@@ -109,8 +109,37 @@ class TestCC(unittest.TestCase):
 
     # Should fail Luhn invalid MC number in 51-55 when length is 16
     # Picked using Category Partition Testing
-    def test17(self):
+    def test17a(self):
         self.assertFalse(credit_card_validator('5372899445328342'))
+
+    # Should pass valid MasterCard lower bound 51
+    # Picked using edge case
+    def test18(self):
+        self.assertTrue(credit_card_validator('5193662224770241'))
+
+    # Should pass valid MasterCard lower bound 2221
+    # Picked using Category Partition Testing
+    def test19(self):
+        self.assertTrue(credit_card_validator('2221012312306560'))
+
+    # Should fail valid MasterCard below lower bound 2220
+    # Picked using edge case
+    def test20(self):
+        self.assertFalse(credit_card_validator('2220012312306561'))
+
+    # Should pass valid MasterCard upper bound 2720
+    # Picked using Category Partition Testing
+    def test21(self):
+        self.assertTrue(credit_card_validator('2720012312306566'))
+
+    # Should fail valid MasterCard above upper bound 2721
+    # Picked using edge case
+    def test22(self):
+        self.assertFalse(credit_card_validator('2721012312306565'))
+
+    # Check lengths
+    # Check invalid Luhn
+    # Check fail boundaries on other ccs
 
 
 if __name__ == '__main__':
